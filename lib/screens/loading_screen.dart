@@ -17,7 +17,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 double latitude;
 double longetude;
 
-  var apikey="b8182205d4316687448631dcda94330a";
+  var apikey="";
   @override
   void initState() {
     getLocationData();
