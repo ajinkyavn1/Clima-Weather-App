@@ -31,7 +31,7 @@ void getLocationData() async{
     longetude=location.longetude;
     NetworkHelper networkHelper=NetworkHelper("https://api.openweathermap.org/data/2.5/find?lat=$latitude&lon=$longetude&cnt=10&appid=$apikey");
     var WhetherData=await networkHelper.getData();
-    Navigator.push(context, MaterialPageRoute(builder: (bu)=> LocationScreen()));
+    Navigator.push(context, MaterialPageRoute(builder: (bu)=> LocationScreen(WhetherDa: WhetherData,)));
   }
   @override
   Widget build(BuildContext context) {

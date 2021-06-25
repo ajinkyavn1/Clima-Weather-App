@@ -2,11 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
+  LocationScreen({this.WhetherDa});
+  final WhetherDa;
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+    double temp;
+    int condition;
+    String CityName;
+  @override
+  void initState() {
+
+    // TODO: implement initState
+    super.initState();
+    print(widget.WhetherDa);
+  }
+  UpdateUI()
+  {
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
