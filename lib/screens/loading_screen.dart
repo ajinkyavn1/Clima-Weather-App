@@ -1,48 +1,44 @@
 import 'dart:convert';
 
+import 'package:clima/services/networking.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:clima/services/location.dart';
 import 'package:http/http.dart' as http;
+
+import 'location_screen.dart';
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+double latitude;
+double longetude;
 
+  var apikey="b8182205d4316687448631dcda94330a";
   @override
   void initState() {
-    getLocation();
-    getData();
+    getLocationData();
     super.initState();
   }
-  void getData()async{
-
-    http.Response response=await http.get("https://api.openweathermap.org/data/2.5/find?lat=20.9&lon=76.2&cnt=10&appid=b8182205d4316687448631dcda94330a");
-    if(response.statusCode==200){
-      String data=response.body;
-     var json=jsonDecode(data);
-     print(json['message']);
-    }else{
-
-    }
-
-  }
-  
-void getLocation() async{
+   
+void getLocationData() async{
   Location location=Location();
     await location.getLocation();
-    print(location.longetude);
-    print(location.latitude);
-}
+    latitude=location.latitude;
+    longetude=location.longetude;
+    NetworkHelper networkHelper=NetworkHelper("https://api.openweathermap.org/data/2.5/find?lat=$latitude&lon=$longetude&cnt=10&appid=$apikey");
+    var WhetherData=await networkHelper.getData();
+    Navigator.push(context, MaterialPageRoute(builder: (bu)=> LocationScreen()));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            getLocation();
+            getLocationData();
             //Get the current location
           },
           child: Text('Get Location'),
