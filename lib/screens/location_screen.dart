@@ -16,8 +16,6 @@ class _LocationScreenState extends State<LocationScreen> {
     WeatherModel weatherModel=new WeatherModel();
   @override
   void initState() {
-
-    // TODO: implement initState
     super.initState();
     UpdateUI(widget.WhetherDa);
   }
