@@ -29,7 +29,7 @@ void getLocationData() async{
     await location.getLocation();
     latitude=location.latitude;
     longetude=location.longetude;
-    NetworkHelper networkHelper=NetworkHelper("https://api.openweathermap.org/data/2.5/find?lat=$latitude&lon=$longetude&cnt=10&appid=$apikey");
+    NetworkHelper networkHelper=NetworkHelper("https://api.openweathermap.org/data/2.5/find?lat=$latitude&lon=$longetude&cnt=10&appid=$apikey&units=metric");
     var WhetherData=await networkHelper.getData();
     Navigator.push(context, MaterialPageRoute(builder: (bu)=> LocationScreen(WhetherDa: WhetherData,)));
   }

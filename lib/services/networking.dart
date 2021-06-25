@@ -10,7 +10,8 @@ class NetworkHelper{
     if(response.statusCode==200){
       String data=response.body;
       var json=jsonDecode(data);
-      return json;
+
+      return json['list'][0];
     }else{
       print("Request Faild");
     }
